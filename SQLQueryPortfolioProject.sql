@@ -21,6 +21,8 @@ ORDER BY 1,2
 -- This shows us a very good glimpse at the death percentage of total cases 
 -- and how the lockout was necessary since the percentages we at an all time high.
 
+-- As you can see, we filter here by 'United States' to focus the data on the country I reside in.
+
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases) * 100 AS DeathPercentage
 FROM PortfolioProject1.dbo.CovidDeaths AS deaths
 WHERE location = 'United States'
@@ -44,7 +46,7 @@ FROM PortfolioProject1.dbo.CovidDeaths AS deaths
 GROUP BY location, population
 ORDER BY 4 DESC
 
--- Which Countries have the highest death number? Lets find out
+-- Which Countries have the highest death count? Lets find out...
 
 SELECT location, MAX(total_deaths) As MaxDeathCount
 FROM PortfolioProject1.dbo.CovidDeaths AS deaths
@@ -56,7 +58,7 @@ ORDER BY 2 DESC
 
 SELECT population, location, MAX(total_deaths) As MaxDeathCount
 FROM PortfolioProject1.dbo.CovidDeaths AS deaths
-WHERE continent is null -- This line makes sure that we are only looking at the data by country and not continent.
+WHERE continent is null -- This line makes sure that we are only looking at the data by continent and not country.
 GROUP BY location, population -- This groups up the data by continent, making it easier to see which continent contains the country that has the highest death count.
 ORDER BY 2 DESC
 
